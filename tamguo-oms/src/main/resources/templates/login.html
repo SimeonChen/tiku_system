@@ -1,0 +1,124 @@
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-4.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8">
+<meta content="webkit" name="renderer" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="keywords" content="PoweredByRepasV1.0.0" />
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+<meta name="description" content="PoweredByRepasV1.0.0" />
+<meta content="no-cache" http-equiv="Pragma" />
+<meta http-equiv="Expires" content="0" />
+<meta content="width=device-width, initial-scale=1, user-scalable=1" name="viewport" />
+<title>登录 - TamGuo OMS</title>
+<script src="global.min.js?ctx=/js/a"></script>
+<script th:src="${setting.staticDomain + 'jquery/jquery-1.12.4.min.js'}"></script>
+<script th:src="${setting.staticDomain + 'jquery/jquery-migrate-1.4.1.min.js'}"></script>
+<!--[if lt IE 9]><script src="common/h5fix.min.js"></script><![endif]-->
+<link rel="stylesheet" th:href="${setting.staticDomain + 'fonts/font-icons.min.css'}">
+<link rel="stylesheet" th:href="${setting.staticDomain + 'bootstrap/css/bootstrap.min.css'}">
+<link rel="stylesheet" th:href="${setting.staticDomain + 'select2/4.0/select2.css'}">
+<link rel="stylesheet" th:href="${setting.staticDomain + 'icheck/1.0/minimal/grey.css'}">
+<link rel="stylesheet" th:href="${setting.staticDomain + 'adminlte/css/AdminLTE.min.css'}">
+<link rel="stylesheet" th:href="${setting.staticDomain + 'common/jeesite.css'}">
+<link rel="stylesheet" th:href="${setting.staticDomain + 'common/common.css'}">
+</head>
+<body class="hold-transition login-page">
+	<div class="wrapper">
+		<link rel="stylesheet" th:href="${setting.staticDomain + 'icheck/1.0/square/blue.css'}">
+		<link rel="stylesheet" th:href="${setting.staticDomain + 'jquery-toastr/2.0/toastr.min.css'}">
+		<link rel="stylesheet" th:href="${setting.staticDomain + 'modules/sys/sysLogin.css'}">
+		<div class="login-box">
+			<div class="login-logo">
+				<a th:href="${setting.domain}"><b>TamGuo OMS</b> <small th:text="${setting.version}">1.0.0</small></a>
+			</div>
+			<div class="login-box-body">
+				<form id="loginForm" th:action="${setting.domain + 'login'}" method="post">
+					<div class="form-group has-feedback">
+						<span class="glyphicon glyphicon-user form-control-feedback"
+							title="登录账号"></span> <input type="text" id="username"
+							name="username" value="" class="form-control required"
+							data-msg-required="请填写登录账号." placeholder="登录账号" />
+					</div>
+					<div class="form-group has-feedback">
+						<span class="glyphicon glyphicon-lock form-control-feedback"
+							title="登录密码，鼠标按下显示密码"
+							onmousedown="$('#password').attr('type','text')"
+							onmouseup="$('#password').attr('type','password')"></span> <input
+							type="password" id="password" name="password" value=""
+							class="form-control required" data-msg-required="请填写登录密码."
+							placeholder="登录密码" autocomplete="off" />
+					</div>
+				    <div class="form-group has-feedback" id="isValidCodeLogin">
+						<div class="input-group">
+							<span class="input-group-addon">验证码：</span> <input type="text"
+								id="validCode" name="validCode" class="form-control"
+								required="true" data-msg-required="请填写验证码"
+								th:remote="${setting.domain + 'checkCode'}" data-msg-remote="验证码不正确." /> <span
+								class="input-group-addon p0"> <img id="validCodeImg"
+								class="validCodeImg" title="看不清，点击图片刷新" src="" alt="验证码"
+								style="width: 100px;" />
+							</span>
+						</div>
+						<script>
+							var validCodeImgRefresh = function() {
+								var src = '/validCode?'
+										+ new Date().getTime();
+								$('#validCodeImg').attr('src', src)
+										.removeClass('hide');
+							}
+							$('#validCodeImg').click(function() {
+								validCodeImgRefresh();
+								$('#validCode').val('').focus();
+							});
+							$('#validCode').focus(function() {
+								if ($('#validCodeImg').attr('src') == '') {
+									$('#validCodeImg').click();
+								}
+							});
+							setTimeout(function() {
+								validCodeImgRefresh();
+							}, 1000);
+						</script>
+					</div>
+					<div class="form-group">
+						<div class="mt5 icheck">
+							<label title="公共场所慎用,下次不需要再填写帐号"><input type="checkbox"
+								name="rememberUser" class="form-control" checked
+								data-style="square-blue"> 记住账号</label> &nbsp; <label
+								title="公共场所慎用,下次不需要再填写帐号和密码">
+						</div>
+					</div>
+					<div class="form-group">
+						<button type="submit" class="btn btn-primary btn-block btn-flat" id="btnSubmit" data-loading="登录验证成功，正在进入..." data-login-valid="正在验证登录，请稍后...">立即登录</button>
+					</div>
+				</form>
+				<div class="row">
+					<div class="col-xs-12">
+						<a href="/account/forgetPwd" class="pull-left">[ 忘记密码 ]</a>
+					</div>
+				</div>
+			</div>
+			<div class="login-copyright">
+				&copy; 2018 TamGuo OMS - Powered By <a href="https://www.tamguo.com" th:text="${'TamGuo OMS' + setting.version}">Repas
+					</a>
+			</div>
+		</div>
+	</div>
+
+	<a id="scroll-up" href="#" class="btn btn-sm"><i class="fa fa-angle-double-up"></i></a>
+	<script th:src="${setting.staticDomain + 'bootstrap/js/bootstrap.min.js'}"></script>
+	<script th:src="${setting.staticDomain + 'select2/4.0/select2.js'}"></script>
+	<script th:src="${setting.staticDomain + 'select2/4.0/i18n/zh_CN.js'}"></script>
+	<script th:src="${setting.staticDomain + 'layer/3.1/layer.js'}"></script>
+	<script th:src="${setting.staticDomain + 'my97/WdatePicker.js'}"></script>
+	<script th:src="${setting.staticDomain + 'jquery-validation/1.16/jquery.validate.js'}"></script>
+	<script th:src="${setting.staticDomain + 'jquery-validation/1.16/localization/messages_zh_CN.js'}"></script>
+	<script th:src="${setting.staticDomain + 'jquery-validation/1.16/jquery.validate.extend.js'}"></script>
+	<script th:src="${setting.staticDomain + 'common/jeesite.js'}"></script>
+	<script th:src="${setting.staticDomain + 'common/i18n/jeesite_zh_CN.js'}"></script>
+	<script th:src="${setting.staticDomain + 'common/common.js'}"></script>
+	<script>var secretKey = 'Tamguo,Tamguo,com';</script>
+	<script th:src="${setting.staticDomain + 'jquery-toastr/2.0/toastr.min.js'}"></script>
+	<script th:src="${setting.staticDomain + 'common/des.js'}"></script>
+	<script th:src="${setting.staticDomain + 'modules/sys/sysLogin.js'}"></script>

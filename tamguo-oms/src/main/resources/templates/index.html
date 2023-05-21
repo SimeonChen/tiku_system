@@ -1,0 +1,62 @@
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-4.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8">
+<meta content="webkit" name="renderer" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="keywords" content="PoweredByJeeSiteV4.0" />
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+<meta name="description" content="PoweredByJeeSiteV4.0" />
+<meta content="no-cache" http-equiv="Pragma" />
+<meta http-equiv="Expires" content="0" />
+<meta content="width=device-width, initial-scale=1, user-scalable=1" name="viewport" />
+<title>Repas Demo</title>
+<script src="global.min.js?ctx=/js/a"></script>
+<script src="jquery/jquery-1.12.4.min.js"></script>
+<script src="jquery/jquery-migrate-1.4.1.min.js"></script>
+<!--[if lt IE 9]><script src="common/h5fix.min.js"></script><![endif]-->
+<link rel="stylesheet" href="fonts/font-icons.min.css">
+<link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+<link rel="stylesheet" href="select2/4.0/select2.css?V4.0-07200941">
+<link rel="stylesheet" href="icheck/1.0/minimal/grey.css?V4.0-07200941">
+<link rel="stylesheet" href="wdScrollTab/css/TabPanel.css?V4.0-07200941">
+<link rel="stylesheet" href="adminlte/css/AdminLTE.min.css?V4.0-07200941">
+<link rel="stylesheet" href="common/jeesite.css?V4.0-07200941">
+<link rel="stylesheet" href="common/common.css?V4.0-07200941">
+</head>
+<body class="hold-transition fixed noscroll2 sidebar-mini ">
+	<div class="wrapper">
+		<!--[if lte IE 9]><a style="position:absolute;top:0;left:0;z-index:100000;display:block;width:100%;font-size:14px;color:#F00;text-decoration:none;background-color:#faffb3;text-align:center;"
+			href="upbw/index.html" target="_blank">您的浏览器版本过低或在兼容模式下，导致打开速度过慢，提升速度您可以切换到极速模式或升级为最新版，点击此处查看详情。</a><![endif]-->
+		<!--[if lte IE 8]><script>window.location.href='upbw/index.html?url='+location.href;</script><![endif]-->
+		<link rel="stylesheet" href="jquery-toastr/2.0/toastr.min.css?V4.0-07200941">
+		<link rel="stylesheet" href="adminlte/css/skins/skin-blue-light.css?V4.0-07200941">
+		<link rel="stylesheet" href="modules/sys/sysIndex.css?V4.0-07200941">
+		<header class="main-header">
+			<nav th:replace="include/topMenu :: topMenu"></nav>
+		</header>
+		<aside class="main-sidebar">
+			<!-- 左侧菜单 -->
+			<section th:replace="include/leftMenu :: leftMenu"></section>
+		</aside>
+		<div class="content-wrapper">
+			<div id="tabpanel"></div>
+		</div>
+	</div>
+
+	<a id="scroll-up" href="#" class="btn btn-sm"><i class="fa fa-angle-double-up"></i></a>
+	<script src="bootstrap/js/bootstrap.min.js"></script>
+	<script src="select2/4.0/select2.js?V4.0-07200941"></script>
+	<script src="select2/4.0/i18n/zh_CN.js?V4.0-07200941"></script>
+	<script src="layer/3.1/layer.js?V4.0-07200941"></script>
+	<script src="my97/WdatePicker.js?V4.0-07200941"></script>
+	<script src="wdScrollTab/js/TabPanel.js?V4.0-07200941"></script>
+	<script src="wdScrollTab/js/TabPanel.extend.js?V4.0-07200941"></script>
+	<script src="common/jeesite.js?V4.0-07200941"></script>
+	<script src="common/i18n/jeesite_zh_CN.js?V4.0-07200941"></script>
+	<script src="common/common.js?V4.0-07200941"></script>
+	<div class="hide" id="desktopTabPage" data-title="仪表盘" th:attr="data-url='sys/desktop'"></div>
+	<div class="hide" id="modifyPasswordTip" data-message=""></div>
+	<script src="jquery-toastr/2.0/toastr.min.js?V4.0-07200941"></script>
+	<script src="jquery-plugins/jquery.slimscroll.js"></script>
+	<script src="modules/sys/sysIndex.js?V4.0-07200941"></script>

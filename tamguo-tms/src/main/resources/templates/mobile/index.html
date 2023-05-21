@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html style="font-size: 42px;">
+<head>
+<meta charset="UTF-8">
+<meta name="apple-mobile-web-app-title" content="掌上探果网">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black" /> 
+<meta name="format-detection" content="telephone=no">
+<meta name="applicable-device" content="mobile">
+<link rel="canonical" href="https://www.tamguo.com"/>
+<meta http-equiv="cleartype" content="on">
+<meta http-equiv="Cache-Control" content="no-transform " />
+<title>探果网_聪明的学生都在这里</title>
+<meta name="keywords" content="高考,考研,财会类,建筑工程,职业资格,医卫类,会计类"/>
+<meta name="description" content="探果网,高考试题,高考试卷,高校试题,名校,名校试题,名校试卷,高校名师,名师专访,名师教案,名师课堂试题库,试卷库,智能题库,历年真题,模拟试题,押题,预测试题,高考,会计证,会计从业,会计师,经济师,施工员,建造师,建筑师,造价师,职业资格,证券资格,考研,计算机考试,建筑考试,财会类,医卫类,护士资格,公务员,知识点,试题,试卷"/>
+<link rel="stylesheet" th:href="${domainName + 'mobile/css/reset.css'}" />
+<link rel="stylesheet" th:href="${domainName + 'mobile/css/index.css'}" />
+<link rel="stylesheet" th:href="${domainName + 'mobile/css/iconfont.css'}" />
+</head>
+<body>
+	<div class="wrapper">
+		<div class="main_start">
+			<!--页面-->
+			<!--TODO here-->
+			<section class="page page_home">
+				<header class="header header_white">
+					<div class="flexbox left">
+						<a th:href="${domainName}" class="header_back"></a> 
+					</div>
+					<a th:href="${domainName}" class=""><span style="font-weight: 600; font-size: 38px; color: #00ae66;">探果网</span></a>
+					<a th:href="${domainName}" class="my right"><i class="icon_user"></i></a>
+				</header>
+
+				<!--/头部-->
+				<div class="content_area">
+					<div class="dynamic_search_box">
+						<div class="input_wrap">
+							<a th:href="${domainName}" class="post_ulog" data-evtid="10523"
+								data-ulog="">
+								<div class="search_box search_center">
+									<i class="icon_search_gray"></i><input type="text"
+										class="input" placeholder="请输入学校或老师名~">
+								</div>
+							</a>
+						</div>
+					</div>
+					
+					<!--学历类型-->
+					<div class="mod_box data_channel tool_list" th:each="m,mStat:${menuList}">
+						<dl class="channel_box">
+							<dt class="title">
+								<a href="javascript:;" th:text="${m.name}">学历类型</a>
+							</dt>
+							<dd class="tool_list_wrap gridbox col_5">
+								<a th:href="${domainName + c.url}" th:title="${c.name}" class="link box_col" th:each="c,cmStat:${m.childSubjects}">
+									<span th:class="${'li-icon iconfont ' + c.pinyin}"></span>
+									<div th:text="${c.name}">去估分</div>
+								</a> 
+							</dd>
+						</dl>
+					</div>
+					<!--/常用工具-->
+				</div>
+
+				<!--底部:导航当前页用h1着重强调-->
+				<footer class="footer">
+					<div class="nav">
+						<span class="location"><a th:href="${domainName}">上海手机探果网</a></span>
+					</div>
+					<div class="link_box">
+						<div class="link_tit">
+							<h3 class="li text_cut active" data-act="foot_nav"
+								data-mark="foot_nav">探果网分站</h3>
+							<h3 class="li text_cut" data-act="foot_nav" data-mark="foot_nav">热门城市</h3>
+						</div>
+						<div class="link_cont">
+							<ul class="gridbox col_3 contlists active" data-mark="foot_navs">
+								<li class="box_col"><a th:href="${domainName}">北京探果网</a></li>
+								<li class="box_col"><a th:href="${domainName}">成都探果网</a></li>
+								<li class="box_col"><a th:href="${domainName}">杭州探果网</a></li>
+								<li class="box_col"><a th:href="${domainName}">上海探果网</a></li>
+								<li class="box_col"><a th:href="${domainName}">天津探果网</a></li>
+								<li class="box_col"><a th:href="${domainName}">南京探果网</a></li>
+								<li class="box_col"><a th:href="${domainName}">青岛探果网</a></li>
+								<li class="box_col"><a th:href="${domainName}">广州探果网</a></li>
+								<li class="box_col"><a th:href="${domainName}">济南探果网</a></li>
+							</ul>
+							<ul class="gridbox col_3 contlists" data-mark="foot_navs">
+								<li class="box_col"><a th:href="${domainName}">重庆探果网</a></li>
+								<li class="box_col"><a th:href="${domainName}">苏州探果网</a></li>
+								<li class="box_col"><a th:href="${domainName}">武汉探果网</a></li>
+								<li class="box_col"><a th:href="${domainName}">深圳探果网</a></li>
+								<li class="box_col"><a th:href="${domainName}">长沙探果网</a></li>
+								<li class="box_col"><a th:href="${domainName}">大连探果网</a></li>
+								<li class="box_col"><a th:href="${domainName}">厦门探果网</a></li>
+								<li class="box_col"><a th:href="${domainName}">合肥探果网</a></li>
+								<li class="box_col"><a th:href="${domainName}">佛山探果网</a></li>
+								<li class="box_col"><a th:href="${domainName}">东莞探果网</a></li>
+								<li class="box_col"><a th:href="${domainName}">烟台探果网</a></li>
+							</ul>
+						</div>
+					</div>
+					<div class="info">
+						<div class="icon_box">
+							<a href="javascript:;" data-mark="download_app"
+								title="iPhone客户端" class="icon_iphone lazyload_ulog"
+								rel="nofollow">iPhone客户端</a> 
+							<a href="javascript:;"
+								title="Android客户端" class="icon_android lazyload_ulog"
+								data-evtid="10380" data-ulog="ljweb_mod=bottom_logo_android"
+								rel="nofollow">Android客户端</a>
+						</div>
+						<div class="copyright">
+							<p class="company">上海探果网络科技有限公司</p>
+							<p class="record">沪ICP备14022608号-1</p>
+							<div class="record" style="">
+								<a target="_blank" href="http://www.beian.gov.cn/portal/registerSystemInfo"
+									style="display: inline-block; text-decoration: none; height: 20px; line-height: 20px;"><img
+									src="https://s1.ljcdn.com/hulk-web/static/m/images/common/beian.png?_v=14022608"
+									style="float: left;">
+								<p
+										style="float: left; height: 20px; line-height: 20px; margin: 0px 0px 0px 5px; color: #727373;">沪ICP备14022608号-1</p></a>
+							</div>
+						</div>
+					</div>
+				</footer>
+				<!--/底部-->
+			</section>
+			<!--/页面-->
+		</div>
+	</div>
+</body>
+
+<script type="text/javascript" th:inline="javascript">
+//百度统计 www.tamguo.com
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?877e9c9ef462fe55b7750d478a41c981";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+
+// 百度推送 www.tamguo.com
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+
+<!--360搜索自动推送  www.tamguo.com-->
+(function(){
+var src = (document.location.protocol == "http:") ? "http://js.passport.qihucdn.com/11.0.1.js?40ee03bede7c19e05d89f18db868df8a":"https://jspassport.ssl.qhimg.com/11.0.1.js?40ee03bede7c19e05d89f18db868df8a";
+document.write('<script src="' + src + '" id="sozz"><\/script>');
+})();
+</script>
+</html>

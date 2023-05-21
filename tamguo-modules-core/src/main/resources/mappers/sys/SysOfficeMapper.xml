@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.tamguo.modules.sys.dao.SysOfficeMapper">
+	
+	<select id="listData" resultType="SysOfficeEntity">
+		SELECT
+			o.*
+		FROM
+			sys_office o	
+		<where>
+			1 = 1
+			<choose>
+		        <when test="parentCode != null and parentCode != ''">
+		          	and o.parent_code = #{parentCode}
+		        </when>
+		        <otherwise>
+		            and o.tree_level = 0
+		        </otherwise>
+		    </choose>
+		</where>
+	</select>
+</mapper>

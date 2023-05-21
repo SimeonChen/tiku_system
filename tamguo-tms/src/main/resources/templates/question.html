@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="Zh-hans" xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<meta charset="UTF-8">
+		<title th:text="${course.seoTitle}"></title>
+		<meta name="keywords" th:content="${course.seoKeywords}"/>
+		<meta name="description" th:content="${course.seoDescription}"/>
+		<meta name="author" content="Tamguo Team" />
+		<meta name="copyright" content="Tamguo" />				
+		<link rel="stylesheet" th:href="${domainName + 'css/main.css'}"></link>
+		<link rel="stylesheet" th:href="${domainName + 'css/reset.css'}" />
+		<link rel="stylesheet" th:href="${domainName + 'css/iconfont.css'}" />
+		<link rel="stylesheet" th:href="${domainName + 'css/question.css'}" />
+		<link rel="stylesheet" th:href="${domainName + 'css/footer.css'}" />
+		<link rel="stylesheet" th:href="${domainName + 'css/member/minilogin.css'}" />
+		<link rel="stylesheet" th:href="${domainName + 'css/questionExt.css'}" />
+		<link rel="stylesheet" th:href="${domainName + 'js/plugins/layui/css/layui.css'}">
+		<link type="favicon" rel="shortcut icon" th:href="${domainName + 'images/favicon.png'}" />
+	</head>
+	<body>
+		
+	<!-- 头部-->
+	<div th:replace="include/header :: header"></div>	
+	
+	<div class="content-wp">
+	<div class="main">
+		<div class="main-inner clearfix">
+			<a class="backtotop iconfont icon-xiangshang" href="#" style="display: none;"></a>
+			<div class="main-contain">
+				<div class="single">
+					<div class="question">
+						<div class="que-title"> <span class="op" th:text="${question.questionType}">填空题</span> <span th:if="${question.score != null}" th:text="${question.score }">5</span> <span th:if="${question.year != null}" th:text="${question.year}">2016</span> </div>
+						<div class="question-box que-blank" id="undefined" data-index="NaN">
+							<div class="question-box-inner">
+								<div class="question-top">
+									<div class="que-stem">
+										<div class="questem-inner bdjson" th:utext="${question.content}">
+											<p><span>社会工作专业化是在长期社会服务实践中形成，在实践中被接受的。在专业化过程中，社会工作发展的重要特点包括(  )。</span><br><br><span>                A．专业理论的完善</span><br><span>B．专业方法的发展</span><br><span>C．目标模式的变化</span><br><span>D．工作对象的拓展</span><br><span>E．理论派别的形成</span><br></p>
+										</div>
+									</div>
+									<div class="que-options">
+										<div class="queoptions-inner bdjson clearfix">
+											<div class="opt-item" style="display: block;" th:each="o,qStat:${question.questionOptions}">
+												<p class="ext_text-align_left"><span class="prefix" th:text="${o.optionNo}">A</span><span th:utext="${o.option}">tRNA分子中含有一定数量的氢键</span></p>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="answer">
+						<div class="answer-contant">
+							<div class="exam-answer">
+								<h3 class="ic answer-ic exam-answer-title">正确答案</h3>
+								<div class="answer-item">
+									<div class="content exam-answer-content bdjson" th:utext="${question.answer}">
+										<p><span>B,C,D,E</span></p>
+									</div>
+								</div>
+							</div>
+							<div class="exam-analysis exam-info">
+								<h3 class="exam-analysis-title"><span class="ic analysis-ic">答案解析</span></h3>
+								<div class="content exam-analysis-content bdjson" th:utext="${question.analysis}">
+									<p><span>[解析] 社会工作作为一个专业是在长期的社会服务实践、对实践经验的总结和不断借用其他学科的新的研究成果等多种因素的共同影响下形成的。在其专业化过程中，专业方法的发展、目标模式的变化、工作对象的拓展、理论派别的形成成为社会工作发展的重要特点。</span></p>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="recommend-que">
+						<div class="kpoint-contain">
+							<h3 class="point-title">考察知识点</h3>
+							<p class="point"> <span class="point-item" th:each="p,pStat:${#strings.arraySplit(question.reviewPoint,',')}" th:text="${p}">社会工作的含义与特点</span></p>
+							<p>
+							<h3 class="point-title">相关回答 <button type="button" class="am-btn am-btn-primary am-radius" onclick="doAnswer()">我来回答</button></h3>
+								<p id="answerDiv" class="point" style="margin-top:20px;display:none;">
+									<textarea id="demo" style="display: none;"></textarea>
+									<button type="button" style="margin-top:20px;" onclick="sendAnswer()" class="am-btn am-btn-primary am-radius">发布</button>
+								<p>
+								<ul class="am-comments-list am-comments-list-flip" style="margin-left: 30px;">
+									<li class="am-comment" th:each="answer,status:${answerList}">
+										<a rel="nofollow">
+											<img th:src="${answer.memberAvatar}" alt="用户头像" class="am-comment-avatar" width="48" height="48"></a>
+											<div class="am-comment-main">
+											<header class="am-comment-hd">
+												<div class="am-comment-meta">
+													<a href="#link-to-user" rel="nofollow" class="am-comment-author" th:text="${answer.memberName}">某人</a>
+													评论于
+													<time 
+														th:title="${#dates.format(answer.createDate, 'yyyy-MM-dd HH:mm:ss')}" th:text="${#dates.format(answer.createDate, 'yyyy-MM-dd HH:mm:ss')}">2014-7-12
+														15:30</time>
+												</div>
+											</header>
+											<div class="am-comment-bd" th:utext="${answer.answer}">
+												<p>那，那是一封写给南部母亲的信。我茫然站在骑楼下，我又看到永远的樱子走到街心。其实雨下得并不大，却是一生一世中最大的一场雨。而那封信是这样写的，年轻的樱子知不知道呢？</p>
+												<blockquote>妈：我打算在下个月和樱子结婚。</blockquote>
+											</div>
+											<footer class="am-comment-footer">
+												<div class="am-comment-actions">
+													<a href=""><i class="am-icon-thumbs-up"></i></a> <a href=""><i
+														class="am-icon-thumbs-down"></i></a> <a href=""><i
+														class="am-icon-reply"></i></a>
+												</div>
+											</footer>
+										</div>
+									</li>
+								</ul>
+							</div>
+					</div>
+				</div>
+			</div>
+			<div class="sidebar">
+				<div class="sidebar-simplemain">
+					<div class="hotexam">
+						<h1 class="hotexam-title">热门考试</h1>
+						<ul class="hotexam-content clearfix">
+							<li class="hotexam-item">
+								<a th:href="${domainName + 'subject/gaokao.html'}">高考</a>
+							</li>
+							<li class="hotexam-item">
+								<a th:href="${domainName + 'subject/yijijianzaoshi.html'}">一级建造师</a>
+							</li>
+							<li class="hotexam-item">
+								<a th:href="${domainName + 'subject/erjijianzaoshi.html'}">二级建造师</a>
+							</li>
+							<li class="hotexam-item">
+								<a th:href="${domainName + 'subject/chujikuaijishi.html'}">初级经济师</a>
+							</li>
+							<li class="hotexam-item">
+								<a th:href="${domainName}">中级经济师</a>
+							</li>
+							<li class="hotexam-item">
+								<a th:href="${domainName}">教师资格证</a>
+							</li>
+							<li class="hotexam-item">
+								<a th:href="${domainName}">企业法律顾问</a>
+							</li>
+							<li class="hotexam-item">
+								<a th:href="${domainName}">注册会计师CPA</a>
+							</li>
+							<li class="hotexam-item">
+								<a th:href="${domainName}">中级会计师</a>
+							</li>
+							<li class="hotexam-item">
+								<a th:href="${domainName}">考研</a>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	</div>
+	
+   
+   	<!--尾部-->
+	<div th:replace="include/footer :: footer"></div>
+	
+	<!-- 登录 -->
+	<div th:replace="include/minilogin :: minilogin"></div>
+</body>
+<script type="text/javascript" th:src="${domainName + 'js/jquery-1.8.3.min.js'}" ></script>
+<script type="text/javascript" th:src="${domainName + 'js/jquery.iDialog.js'}"></script>
+<script type="text/javascript" th:src="${domainName + 'js/main.js'}" ></script>
+<script type="text/javascript" th:src="${domainName + 'js/member/minlogin.js'}"></script>
+<script type="text/javascript" th:src="${domainName + 'js/plugins/layui/layui.js'}"></script>
+<script type="text/javascript" th:src="${domainName + 'js/plugins/layer/layer.js'}"></script>
+<script src="https://cdn.jsdelivr.net/npm/axios@0.18.0/dist/axios.min.js"></script>
+<script type="text/javascript" th:inline="javascript">
+var layedit = null;
+var edit = null;
+function doAnswer(){
+	// 判断是否登录
+	axios.get(mainHttp + 'isLogin.html').then(function(response){
+		if(response.data.code != 1){
+			if($(".header .login-container").find("span").length == 1){
+				$(".mask").css("display","block");
+				$("#passport-login-pop").css("display","block");
+			}
+		}else{
+			layui.use('layedit', function(){
+			  layedit = layui.layedit;
+			  edit = layedit.build('demo'); //建立编辑器
+			});
+			
+			$("#answerDiv").fadeIn(1000);
+		}
+	});
+}
+// 发布
+function sendAnswer(){
+	var content = layedit.getContent(edit);
+	axios.post(mainHttp + 'member/sendAnswer.html',{'questionId':[[${question.id}]],'answer':content}).then(function(response){
+		if(response.data.code == 0){
+			//墨绿深蓝风
+			layer.alert('回答成功！', {closeBtn: 0
+			}, function(){
+				window.location.reload();
+			});
+		}else{
+			layer.alert('服务器异常！')
+		}
+	});
+}
+</script>
+</html>

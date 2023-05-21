@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="Zh-hans" xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<meta charset="UTF-8">
+		<title>会员中心 - 探果网</title>
+		<link rel="stylesheet" th:href="${domainName + 'static/css/reset.css'}" />
+		<link rel="stylesheet" th:href="${domainName + 'static/css/iconfont.css'}" />
+		<link rel="stylesheet" th:href="${domainName + 'static/css/member/index.css'}" />
+		<link rel="stylesheet" th:href="${domainName + 'static/css/member/memberMain.css'}" />
+		<link type="favicon" rel="shortcut icon" th:href="${domainName + 'static/images/favicon.png'}" />
+		<!-- 引入样式 -->
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/element-ui@2.4.2/lib/theme-chalk/index.css">
+	</head>
+	<body>
+	<!-- 头部-->
+	<div class="head" th:fragment="memberHeader">
+		<div class="head-bar public">
+			<div class="logo">
+				<a th:href="${tamguoDomainName}">
+					<img th:src="${domainName + 'static/images/logo_731bc32.png'}">
+				</a>
+				<p><span>会员中心</span></p>
+			</div>
+			<ul class="nav">
+				<li class="active"><a th:href="${domainName + 'index.html'}">首页</a></li>
+				<li><a th:href="${domainName + 'booklist.html'}">书籍</a></li>
+				<li><a th:href="${domainName + 'account.html'}">帐号</a></li>
+			</ul>
+			<div class="mguser">
+				<div class="mguser-box">
+					<span th:text="${member.username}">tamguo</span>
+					<a th:href="${domainName + 'logout.html'}">退出</a>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	<!--主体-->	
+    <div class="cnav">
+			<div class="public cnav_b">
+				<div class="cnav_left">
+					探果五步曲
+				</div>
+				<div class="cnav_right">
+					<ul>
+						<li><span class="Cnav_t">1</span><b>新建书籍</b></li>
+						<li><span>2</span>添加章节</li>
+						<li><span>3</span>添加内容</li>
+						<li><span>4</span>发布书籍</li>
+						<li><span>5</span>等待收益</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		
+		<div class="PCshow hide" style="display: block;" id="container">
+			<div class="examContent public">
+				<h2>
+				<img th:src="${domainName + 'static/images/member/index/face-xiao.png'}"
+					style="position: relative; top: -2px;"> &nbsp;<span
+					style="letter-spacing: 4px;"> 
+					<b id="userName" style="font-weight: normal; color: #2abcb8" th:text="${member.nickName}">tamguo</b>，您好！欢迎来到探果网会员中心
+				</span>
+			</h2>
+			<!-- 左侧基本信息项 -->
+			<div class="newsLeft">
+				<div class="baseNews">
+					<h3><i></i> 基本信息</h3>
+					<div id="borderBox">
+					<table style="float: left;">
+						<tbody><tr>
+							<td>
+							<span class="logoV">
+							<img th:src="${domainName +'static'+ member.avatar}">
+							</span>
+							</td>
+						</tr>
+					</tbody></table>
+						<b th:title="${member.username}" style="font-size: 16px;	margin-left: 14px;float: left;display: inline-block;font-weight: normal;max-width: 100px;overflow: hidden;white-space: nowrap;text-overflow: ellipsis;" th:text="${member.username}">盘诚软件</b>
+						<a style="font-size: 12px;" th:href="${domainName + 'member/account.html'}"><i class="iconfont icon-icon_edit"></i> 编辑</a>
+					</div>
+					<p style="clear: both;height: 0px;"></p>
+				</div>
+				<div class="well"></div>
+				<div class="userNews">
+					<h3><i></i> 账户信息</h3>
+					<ul>
+						<li style="padding-left: 21px;">积分：
+							<b style="margin-left:14px;color:#009688;" id="examCandsNum" th:text="${member.point + ' '}">1000</b>分
+						</li>
+						<li style="padding-left: 24px;">余额：<b style="margin-left: 19px;color:#009688;" th:text="${#numbers.formatDecimal(member.amount,1,2) + ' '}">50</b>元</li>
+						<li style="padding-left: 21px;">最近登录时间：<b style="margin-left: 13px;" th:text="${#dates.format(member.lastLoginTime, 'yyyy/MM/ss HH:mm')}">2018-04-27 10:32</b></li>
+					</ul>
+					<a @click="withdrawMoney" target="_blank" id="addMoney">提现</a>
+				</div>
+			</div>
+			<!-- 右侧信息显示 -->
+			<div class="newsR">
+				<div class="topNews" id="numList1">
+					<ul>
+						<li>
+							<img th:src="${domainName + 'static/images/member/index/peneil.png'}" style="margin-top: 26px;position: relative;top: -4px;"><br>
+							<span><b id="datab1" th:text="${member.downNum}">0</b> 次</span><br>
+							<span>下载总数</span>
+						</li>
+						<li>
+							<img th:src="${domainName + 'static/images/member/index/paperm.png'}" style="margin-top: 26px;position: relative;top: -4px;"><br>
+							<span><b id="datab2" th:text="${member.paperNum}">1</b> 套</span><br>
+							<span>书籍总数</span>
+						</li>
+						<li>
+							<img th:src="${domainName + 'static/images/member/index/peoplem.png'}" style="margin-top: 26px;position: relative;top: -4px;"><br>
+							<span><b id="datab3" th:text="${member.hitsNum}">0</b> 次</span><br>
+							<span>阅读总数</span>
+						</li>
+						<li>
+							<img th:src="${domainName + 'static/images/member/index/testnew.png'}" style="margin-top: 26px;position: relative;top: -6px;"><br>
+							<span><b id="datab4" th:text="${member.questionNum}">19</b> 道</span><br>
+							<span>章节总数</span>
+						</li>
+					</ul>
+					<div class="newExam">
+						<div class="add-p">
+							<a th:href="${domainName + 'booklist.html'}"><i class="iconfont icon-jia" style="font-size:130px;"></i></a>
+						</div>
+						<a th:href="${domainName + 'booklist.html'}">开始新建书籍</a>
+					</div>
+				</div>
+			</div>
+		</div>
+		</div>
+		
+		<!-- 尾部-->
+		<div th:replace="include/footer :: footer"></div>
+		
+		<!-- 引入组件库 -->
+		<script src="https://cdn.jsdelivr.net/npm/vue@2.5.16"></script>
+		<script src="https://cdn.jsdelivr.net/npm/axios@0.18.0/dist/axios.min.js"></script>
+	    <script src="https://cdn.jsdelivr.net/npm/element-ui@2.4.2/lib/index.js"></script>
+	    <script type="text/javascript">
+	 // Vue
+	    var vm = new Vue({
+	    	el:'#container',
+	    	data:{
+	    	},
+	    	methods: {
+	    		withdrawMoney:function(){
+	    			this.$message.error('提现功能在开发中,可联系管理员提现。 微信号：TamGooo ');	
+	    		} 
+	    	}
+	    });
+	    </script>
+</body>
+</html>

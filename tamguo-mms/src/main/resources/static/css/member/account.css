@@ -1,0 +1,198 @@
+@charset "utf-8";
+.contentBox {
+    margin-top: 20px;
+    font-size: 14px;
+    overflow: hidden;
+}
+.infoCnt-box {
+    padding: 0px;
+}
+.cnt-box {
+    background: #FFFFFF;
+    padding: 10px;
+}
+.public {
+    width: 1098px;
+    margin: 0px auto;
+}
+.info-cnt {
+    padding-top: 0px;
+    padding-bottom: 0px;
+}
+.contentBox .navLeft {
+    float: left;
+    display: inline-block;
+    width: 16.4%;
+    background: rgb(41,186,185);
+}
+.contentBox .navLeft dl dt {
+    height: 40px;
+    line-height: 40px;
+    background: rgb(37,172,169);
+    padding-left: 10px;
+    font-size: 14px;
+    color: white;
+    cursor: pointer;
+}
+.icon-w {
+    float: right;
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+    margin-right: 10px;
+}
+.fa {
+    display: inline-block;
+    font: normal normal normal 14px/1 FontAwesome;
+    font-size: inherit;
+    text-rendering: auto;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+.fa-minus:before {
+    content: "\f068";
+}
+.contentBox .navLeft dl dd {
+    text-align: center;
+    color: white;
+    height: 40px;
+    line-height: 40px;
+    cursor: pointer;
+}
+.navLeft dl dd i {
+    width: 17px;
+    height: 14px;
+    display: inline-block;
+    background: url(../../images/member/account/icon-erro.png) no-repeat;
+    margin: 0px 4px;
+    position: relative;
+    top: 1px;
+    margin-left: 0px;
+}
+.contentBox .navLeft dl dd {
+    text-align: center;
+    color: white;
+    height: 40px;
+    line-height: 40px;
+    cursor: pointer;
+}
+.contentBox .newsRight {
+    float: left;
+    display: inline-block;
+    width: 83%;
+    background: white;
+    min-height: 279px;
+}
+.info-rBox {
+    padding-left: 76px;
+}
+.info-rBox {
+    padding-bottom: 40px!important;
+}
+.info-rBox {
+    padding-left: 80px;
+    position: relative;
+}
+.user_list {
+    padding: 0px;
+}
+.user_list {
+    padding: 20px 0px;
+    vertical-align: top;
+    width: 550px;
+}
+.info-table {
+    width: 100%;
+    margin-top: 28px;
+    font-size: 14px;
+}
+.info-table tr td {
+    padding-bottom: 20px;
+}
+.info-label {
+    position: relative;
+}
+.info-label span {
+    position: absolute;
+    left: -15px;
+    top: 0px;
+    color: #ff5a00;
+}
+* {
+    box-sizing: border-box;
+}
+.cvcadd-text {
+    height: 40px;
+    border: 1px solid #d4d7db;
+    font-size: 14px;
+    padding: 0px 12px;
+    width: 311px;
+}
+.acphoto {
+    display: inline-block;
+    position: relative;
+    /* padding: 0 2em; */
+    border: none;
+    border-radius: 80px;
+    height: 80px;
+    width: 80px;
+    background: #eee;
+    color: #fff;
+    font-size: 14px;
+    line-height: 28px;
+    text-decoration: none;
+    cursor: pointer;
+    float: left;
+}
+.mybtn {
+    float: left;
+    margin-left: 10px;
+    padding-top: 10px;
+}
+.up_photo {
+    display: inline-block;
+    position: relative;
+    padding: 0 2em;
+    /* border: none; */
+    border: 1px solid #29bdb9;
+    border-radius: 0px;
+    background: #29bdb9;
+    color: #fff;
+    font-size: 14px;
+    line-height: 28px;
+    text-decoration: none;
+    cursor: pointer;
+    margin-top: 15px;
+}
+.up_photo {
+    display: inline-block;
+    position: relative;
+    padding: 0 2em;
+    /* border: none; */
+    border: 1px solid #29bdb9;
+    border-radius: 0px;
+    background: #29bdb9;
+    color: #fff;
+    font-size: 14px;
+    line-height: 28px;
+    text-decoration: none;
+    cursor: pointer;
+    margin-top: 15px;
+}
+a.btn_ok {
+    display: inline-block;
+    position: relative;
+    padding: 0 2em;
+    border: none;
+    border-radius: 0px;
+    background: #29bdb9;
+    color: #fff;
+    font-size: 14px;
+    line-height: 28px;
+    text-decoration: none;
+    cursor: pointer;
+}
+.head .nav li:hover {
+    border-bottom: 2px solid #29bdb9;
+    font-weight: bold;
+}

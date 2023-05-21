@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.tamguo.modules.sys.dao.SysMenuMapper">
+	
+	<select id="listData" resultType="SysMenuEntity">
+		SELECT
+			m.menu_code,
+			m.parent_code,
+			m.parent_codes,
+			m.tree_sort,
+			m.tree_sorts,
+			m.tree_leaf,
+			m.tree_level,
+			m.tree_names,
+			m.menu_name,
+			m.menu_type,
+			m.menu_href,
+			m.menu_target,
+			m.menu_icon,
+			m.menu_color,
+			m.permission,
+			m.weight,
+			m.is_show,
+			m.sys_code,
+			m.`status`,
+			m.create_by,
+			m.update_by,
+			m.update_date,
+			m.remarks
+		FROM
+			sys_menu m
+		<where>
+			1 = 1
+			<choose>
+		        <when test="parentCode != null and parentCode != ''">
+		          	and m.parent_code = #{parentCode}
+		        </when>
+		        <otherwise>
+		            and m.tree_level = 0
+		        </otherwise>
+		    </choose>
+		</where>
+	</select>
+	
+	<select id="selectMenuByRoleId" resultType="SysMenuEntity">
+		SELECT
+			m.menu_code,
+			m.parent_code,
+			m.parent_codes,
+			m.tree_sort,
+			m.tree_sorts,
+			m.tree_leaf,
+			m.tree_level,
+			m.tree_names,
+			m.menu_name,
+			m.menu_type,
+			m.menu_href,
+			m.menu_target,
+			m.menu_icon,
+			m.menu_color,
+			m.permission,
+			m.weight,
+			m.is_show,
+			m.sys_code,
+			m.`status`,
+			m.create_by,
+			m.update_by,
+			m.update_date,
+			m.remarks
+		FROM
+			sys_menu m,sys_role_menu RM
+		WHERE RM.role_code = #{roleCode} and RM.menu_code = m.menu_code
+	</select>
+</mapper>
